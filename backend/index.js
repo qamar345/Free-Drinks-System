@@ -1,8 +1,15 @@
-const { json } = require("body-parser");
 const express = require("express");
+const { PORT } = require("./config/config");
+const cors = require("cors");
+const router = require("./routes/index-routes");
+const { MYConnection } = require("./connection/connection");
 
-const app = express(json());
+const app = express();
+app.use(express.json());
+app.use(cors());
+MYConnection();
+app.use(router);
 
-app.listen(8000, () => {
-  console.log("Server Running on 8000");
+app.listen(PORT, () => {
+  console.log(`Server Running on Port: ${PORT}`);
 });

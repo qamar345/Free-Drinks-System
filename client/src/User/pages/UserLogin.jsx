@@ -49,15 +49,22 @@ export const UserLogin = () => {
                         Login
                       </button>
                     </div>
+
+                    <span
+                      data-aos="fade-right"
+                      data-aos-duration="2500"
+                      style={{ color: "white", textAlign: "center" }}
+                    >
+                      Have an account? <a href="">Register</a>
+                    </span>
                   </div>
 
                   <br />
                   <br />
                 </div>
               </div>
-              <div className="col-sm-3"></div>
 
-              {/* <div className="col-sm-4"></div> */}
+              <div className="col-sm-3"></div>
             </div>
           </div>
         </div>

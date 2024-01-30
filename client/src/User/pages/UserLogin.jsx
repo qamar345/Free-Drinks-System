@@ -9,56 +9,54 @@ export const UserLogin = () => {
   }, []);
   return (
     <>
-      <section style={{ backgroundColor: "#ed6a5a" }}>
+      <section className="background-bg">
         <div className="container">
           <div className="container-fluid">
             <div className="row">
-              <div data-aos="fade-right" data-aos-duration="1500" className="col-sm-4">
-                <img src={drink0} alt="" />
-              </div>
-              <div data-aos="fade-up" data-aos-duration="1500" className="col-sm-4">
-                <h1 className="login-text">Welcome to DrinkPass!</h1>
-
-                <p style={{ color: "white" }}>
-                  Unlock a World of Flavor with Free Drinks at Local
-                  Restaurants!
-                </p>
-              </div>
-              <div data-aos="fade-left" data-aos-duration="1500" className="col-sm-4">
+              <div className="col-sm-3"></div>
+              <div
+                data-aos="flip-up"
+                data-aos-duration="1500"
+                className="col-sm-6"
+              >
                 <div className="shadow rounded p-3 login-form">
-                  <br />
-                  <br />
                   <h3 className="text-center" style={{ color: "white" }}>
                     Login
                   </h3>
                   <br />
-                  <br />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="form-control"
-                  />
-                  <br />
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    className="form-control"
-                  />
+                  <div className="row">
+                    <div className="col-sm-5">
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        className="form-control"
+                      />
+                    </div>
 
-                  <br />
-                  <br />
-                  <div className="text-center">
-                    <button
-                      className="btn btn-primary border-0"
-                      style={{ backgroundColor: "black" }}
-                    >
-                      Login
-                    </button>
+                    <div className="col-sm-5 mobile-view">
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        className="form-control"
+                      />
+                    </div>
+
+                    <div className="col-sm-2 mobile-view">
+                      <button
+                        className="btn btn-primary border-0"
+                        style={{ backgroundColor: "black", width: "100%" }}
+                      >
+                        Login
+                      </button>
+                    </div>
                   </div>
+
                   <br />
                   <br />
                 </div>
               </div>
+              <div className="col-sm-3"></div>
+
               {/* <div className="col-sm-4"></div> */}
             </div>
           </div>

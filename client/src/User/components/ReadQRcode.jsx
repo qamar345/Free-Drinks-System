@@ -20,11 +20,11 @@
 //         this.setState({result: data});
 //     }
 //   }
-  
+
 //   handleError = err => {
 //     console.error(err)
 //   }
-  
+
 //   render() {
 //     return (
 //       <div>
@@ -40,3 +40,5 @@
 //     )
 //   }
 // }
+
+

@@ -98,7 +98,7 @@ export const UserDashboard = () => {
                   >
                     <div style={{ marginTop: "-50px" }}>
                       <QRCode
-                        value="http://192.168.1.120:3000"
+                        value="https://www.youtube.com"
                         size={75}
                         style={{ border: "5px solid  #ed6a5a " }}
                       />

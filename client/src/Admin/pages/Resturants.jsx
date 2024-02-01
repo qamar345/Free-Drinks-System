@@ -4,7 +4,7 @@ import "../assets/style/adminStyle.css";
 export const Resturants = () => {
   return (
     <>
-      <section className="admin-bg">
+      <section>
         <div className="container">
           <div className="container-fluid resturant-table">
             <table className="table text-center overflow-x-scroll">

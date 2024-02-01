@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "../assets/style/style.css";
-import bg from "../assets/images/bg.webp";
 import Aos from "aos";
 
 export const UserRegister = () => {

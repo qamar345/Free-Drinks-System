@@ -18,13 +18,13 @@ function App() {
       {/* <UserLogin/> */}
       {/* <UserRegister/> */}
       {/* <UserHome /> */}
-      {/* <UserNav /> */}
-      {/* <UserDashboard /> */}
+      {/* <UserNav />
+      <UserDashboard /> */}
       {/* <Menu/> */}
       {/* <AdminLogin/> */}
-      {/* <AdminDashboard/> */}
+      <AdminDashboard/>
       {/* <Resturants/> */}
-      <Users/>
+      {/* <Users/> */}
     </>
   );
 }

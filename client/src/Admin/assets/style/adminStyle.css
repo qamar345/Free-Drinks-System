@@ -1,0 +1,71 @@
+.admin-bg {
+    background-image: url("../../../User/assets/images/bg.webp");
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.admin-login-form {
+    margin-top: 40%;
+    margin-bottom: 35%;
+}
+
+.admin-login-btn {
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.mobile-view {
+    text-align: center !important;
+}
+
+
+/* Admin Dashboard */
+
+.dashboard-style {
+    margin-top: 21%;
+    margin-bottom: 20.2%;
+
+}
+
+.card-bg {
+    background-color: yellowgreen;
+    color: white;
+
+}
+
+.resturant-table {
+    margin-top: 18%;
+    margin-bottom: 20%;
+}
+
+.users-table {
+    margin-top: 18%;
+    margin-bottom: 20%;
+}
+
+
+@media screen and (max-width: 600px) {
+    .admin-login-form {
+        margin-top: 75%;
+        margin-bottom: 75%;
+    }
+
+    .mobile-view {
+        text-align: left !important;
+    }
+
+    .dashboard-style {
+        margin-top: 45%;
+        margin-bottom: 45%;
+
+    }
+
+    .users-table {
+        margin-top: 75%;
+        margin-bottom: 100%;
+    }
+}
+
+
+/* #ed6a5a */

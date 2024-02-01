@@ -140,7 +140,7 @@
 }
 
 .basic-btn {
-   
+
     background-color: #ed6a5a;
     color: white;
     font-size: large;
@@ -148,7 +148,7 @@
     width: 100%;
 }
 
-.plan-level{
+.plan-level {
     font-size: small;
     font-weight: bold;
 }
@@ -157,6 +157,39 @@
     background-color: #ed6a5a;
     font-weight: bold;
     color: white;
+}
+
+/* Menu */
+
+.menu-bg {
+    background-image: url("../images/bg.webp");
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.menu-top-m {
+    margin-top: 20%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.question {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.card-style {
+    text-align: center;
+    border: 0;
+}
+
+.choose {
+    width: 100%;
+    background-color: #ed6a5a;
+    color: white;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
@@ -194,6 +227,8 @@
     }
 
 }
+
+
 
 
 

@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
-import "../assets/style/adminStyle.css";
-import cafe from "../assets/images/cafe.ico";
 import Aos from "aos";
+import "../assets/style/resturantStyle.css";
 
-export const AdminDashboard = () => {
+export const ResturantDashboard = () => {
   useEffect(() => {
     Aos.init();
   }, []);
   return (
     <>
-      <section className="admin-bg">
+      <section className="restu-bg">
         <div className="container">
-          <div className="container-fluid dashboard-style">
+          <div className="container-fluid restu-dashboard-style">
             <div className="row">
-              <div className="col-sm-3 mt-3">
+              <div className="col-sm-4 mt-3">
                 <a href="" style={{ textDecoration: "none" }}>
                   <div
                     data-aos="zoom-in"
@@ -21,32 +20,16 @@ export const AdminDashboard = () => {
                     className="card shadow rounded p-3 card-bg text-center"
                   >
                     <span>
-                      <i className="fa-solid fa-utensils fa-2xl"></i>
+                      <i className="fa-solid fa-list fa-2xl"></i>
                     </span>
                     <div className="card-body">
-                      <h3>Resturants</h3>
+                      <h3>Add Menu</h3>
                     </div>
                   </div>
                 </a>
               </div>
-              <div className="col-sm-3 mt-3">
-                <a href="" style={{ textDecoration: "none" }}>
-                  <div
-                    data-aos="zoom-in"
-                    data-aos-duration="3000"
-                    className="card shadow rounded p-3 card-bg text-center"
-                  >
-                    <span>
-                      <i className="fa-solid fa-users fa-2xl"></i>
-                    </span>
 
-                    <div className="card-body">
-                      <h3>Users</h3>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div className="col-sm-3 mt-3">
+              <div className="col-sm-4 mt-3">
                 <a href="" style={{ textDecoration: "none" }}>
                   <div
                     data-aos="zoom-in"
@@ -63,7 +46,7 @@ export const AdminDashboard = () => {
                   </div>
                 </a>
               </div>
-              <div className="col-sm-3 mt-3">
+              <div className="col-sm-4 mt-3">
                 <a href="" style={{ textDecoration: "none" }}>
                   <div
                     data-aos="zoom-in"
@@ -80,6 +63,7 @@ export const AdminDashboard = () => {
                   </div>
                 </a>
               </div>
+
               <br />
               <br />
             </div>

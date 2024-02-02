@@ -1,28 +1,28 @@
-.admin-bg {
+.restu-bg {
     background-image: url("../../../User/assets/images/bg.webp");
     background-size: cover;
     overflow-x: hidden;
 }
 
-.admin-login-form {
+/* .restu-login-form {
     margin-top: 40%;
     margin-bottom: 35%;
 }
 
-.admin-login-btn {
+.restu-login-btn {
     width: 100%;
     background-color: black;
     color: white;
-}
+} */
 
-.mobile-view {
+/* .restu-mobile-view {
     text-align: center !important;
-}
+} */
 
 
 /* Admin Dashboard */
 
-.dashboard-style {
+.restu-dashboard-style {
     margin-top: 21%;
     margin-bottom: 20.2%;
 
@@ -35,7 +35,7 @@
 
 }
 
-.resturant-table {
+/* .resturant-table {
     margin-top: 18%;
     margin-bottom: 20%;
 }
@@ -43,7 +43,7 @@
 .users-table {
     margin-top: 18%;
     margin-bottom: 20%;
-}
+} */
 
 
 @media screen and (max-width: 600px) {
@@ -56,7 +56,7 @@
         text-align: left !important;
     }
 
-    .dashboard-style {
+    .restu-dashboard-style {
         margin-top: 45%;
         margin-bottom: 45%;
 

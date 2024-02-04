@@ -33,8 +33,8 @@ function App() {
       {/* <ResturantDashboard /> */}
       {/* <RegisterResturant/> */}
       {/* <ResturantLogin /> */}
-      {/* <AddMenu/> */}
-      <Response/>
+      <AddMenu/>
+      {/* <Response/> */}
     </>
   );
 }

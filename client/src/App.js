@@ -12,6 +12,10 @@ import { AdminDashboard } from "./Admin/pages/AdminDashboard";
 import { Resturants } from "./Admin/pages/Resturants";
 import { Users } from "./Admin/pages/Users";
 import { ResturantDashboard } from "./Resturant/pages/ResturantDashboard";
+import { RegisterResturant } from "./Resturant/pages/RegisterResturant";
+import { ResturantLogin } from "./Resturant/pages/ResturantLogin";
+import { AddMenu } from "./Resturant/pages/AddMenu";
+import { Response } from "./Resturant/pages/Response";
 
 function App() {
   return (
@@ -26,7 +30,11 @@ function App() {
       {/* <AdminDashboard/> */}
       {/* <Resturants/> */}
       {/* <Users/> */}
-      <ResturantDashboard/>
+      {/* <ResturantDashboard /> */}
+      {/* <RegisterResturant/> */}
+      {/* <ResturantLogin /> */}
+      {/* <AddMenu/> */}
+      <Response/>
     </>
   );
 }

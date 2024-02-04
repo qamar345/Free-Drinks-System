@@ -4,23 +4,23 @@
     overflow-x: hidden;
 }
 
-/* .restu-login-form {
-    margin-top: 40%;
-    margin-bottom: 35%;
+.restu-register-form {
+    margin-top: 15%;
+    margin-bottom: 15%;
 }
 
-.restu-login-btn {
+.restu-register-btn {
     width: 100%;
     background-color: black;
     color: white;
-} */
+}
 
-/* .restu-mobile-view {
+.restu-mobile-view {
     text-align: center !important;
-} */
+}
 
 
-/* Admin Dashboard */
+/* Resturant Dashboard */
 
 .restu-dashboard-style {
     margin-top: 21%;
@@ -35,24 +35,32 @@
 
 }
 
-/* .resturant-table {
-    margin-top: 18%;
+
+/* Menu */
+
+.menu-form {
+    margin-top: 16%;
+    margin-bottom: 16%;
+}
+
+.menu-submit {
+    color: white;
+    background-color: black;
+    width: 100%;
+}
+
+.users-response {
+    margin-top: 10%;
     margin-bottom: 20%;
 }
 
-.users-table {
-    margin-top: 18%;
-    margin-bottom: 20%;
-} */
-
-
 @media screen and (max-width: 600px) {
-    .admin-login-form {
-        margin-top: 75%;
-        margin-bottom: 75%;
+    .restu-register-form {
+        margin-top: 50%;
+        margin-bottom: 50%;
     }
 
-    .mobile-view {
+    .restu-mobile-view {
         text-align: left !important;
     }
 
@@ -62,9 +70,14 @@
 
     }
 
-    .users-table {
-        margin-top: 75%;
-        margin-bottom: 100%;
+    .users-response {
+        margin-top: 70%;
+        margin-bottom: 95%;
+    }
+
+    .menu-form {
+        margin-top: 80%;
+        margin-bottom: 90%;
     }
 }
 

@@ -1,18 +1,13 @@
-const mysql = require("mysql");
-const { HOST, USER, PASSWORD, DATABASE } = require("../config/config");
+const mongoose = require("mongoose");
+const { MONGO } = require("../config/config");
 
-const conn = mysql.createConnection({
-  host: HOST,
-  user: USER,
-  password: PASSWORD,
-  database: DATABASE,
-});
-
-const MYConnection = () => {
-  conn.connect((err) => {
-    if (err) throw err;
-    console.log("Server Connected with SQL Successfully");
-  });
+const MYConnection = async () => {
+  try {
+    await mongoose.connect(MONGO);
+    console.log("Server Connected with Database");
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-module.exports = { MYConnection, conn };
+module.exports = { MYConnection };

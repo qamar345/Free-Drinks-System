@@ -1,49 +1,67 @@
 const { SECRET } = require("../config/config");
-const { conn } = require("../connection/connection");
 const jwt = require("jsonwebtoken");
+const { User } = require("../model/user-model");
 
-const Signup = (req, res) => {
+const Signup = async (req, res) => {
   const { name, email, password, role, trial } = req.body;
-  const data = [name, email, password, role, trial];
 
-  const signup_query =
-    "INSERT INTO `users`(`name`, `email`, `password`, `role`, `trial`) VALUES (?)";
-
-  conn.query(signup_query, [data], (err, data) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(data);
-    }
+  const data = User({
+    name: name,
+    email: email,
+    password: password,
+    role: role,
+    trial: trial,
   });
+
+  let checkEmail = false;
+
+  try {
+    const user = await User.find();
+
+    for (let i = 0; i < user.length; i++) {
+      if (user[i].email === email) {
+        checkEmail = true;
+      }
+    }
+
+    if (checkEmail) {
+      res.json("Email Already Register");
+    } else {
+      await data.save();
+      res.json("Signup Successfully");
+    }
+  } catch (error) {
+    res.json(error);
+  }
 };
 
-const Login = (req, res) => {
+const Login = async (req, res) => {
   const { email, password, role } = req.body;
 
-  const login_query =
-    "SELECT `email`, `password`, `role` FROM `users` WHERE `email` =? AND `password` =? AND `role`=?";
-  conn.query(login_query, [email, password, role], (err, data) => {
-    if (err) {
-      res.json(err);
+  const filter = { email: email, password: password, role: role };
+
+  try {
+    const result = await User.findOne(filter);
+    if (result === null) {
+      res.json("User not found");
     } else {
       const secretKey = SECRET;
-
       const payload = {
-        email: data[0].email,
-        password: data[0].password,
+        email: result.email,
+        password: result.password,
       };
-
       /* Create JWT */
-
       const token = jwt.sign(payload, secretKey, { expiresIn: "5d" });
 
       res.json({
-        message: "Login Successfully",
-        tokenId: token,
+        n: result.name,
+        e: result.email,
+        tokenID: token,
       });
     }
-  });
+  } catch (error) {
+    res.json(error);
+  }
 };
 
 const Test = (req, res) => {

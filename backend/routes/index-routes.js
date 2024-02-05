@@ -2,10 +2,11 @@ const express = require("express");
 const { Test, Signup, Login } = require("../controller/user-controller");
 const { SECRET } = require("../config/config");
 const jwt = require("jsonwebtoken");
-const { conn } = require("../connection/connection");
+const { User } = require("../model/user-model");
 
 const router = express.Router();
 
+/* Token Verification */
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
   const secretKey = SECRET;
@@ -13,17 +14,13 @@ const verifyToken = async (req, res, next) => {
   try {
     const verify = jwt.verify(token, secretKey);
     const userEmail = verify.email;
+    const verifyEmail = await User.findOne({ email: userEmail });
 
-    const verifyEmail = "SELECT `email` FROM `users` WHERE `email` =?";
-
-    conn.query(verifyEmail, [userEmail], (err, data) => {
-      if (err) {
-        res.json(err);
-      } else {
-        next();
-
-      }
-    });
+    if (verifyEmail !== null) {
+      next();
+    } else {
+      res.json("Invalid Token!!!");
+    }
   } catch (error) {
     res.json("Invalid Token!!!");
   }
@@ -32,7 +29,6 @@ const verifyToken = async (req, res, next) => {
 /* Endpoints */
 
 router.get("/test", verifyToken, Test);
-
 router.post("/signup", Signup);
 router.post("/login", Login);
 

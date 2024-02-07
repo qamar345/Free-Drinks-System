@@ -1,8 +1,9 @@
 const express = require("express");
-const { Test, Signup, Login } = require("../controller/user-controller");
 const { SECRET } = require("../config/config");
 const jwt = require("jsonwebtoken");
 const { User } = require("../model/user-model");
+const { Test, Signup, Login } = require("../controller/user-controller");
+const { RegisterResturant } = require("../controller/resturant-controller");
 
 const router = express.Router();
 
@@ -31,5 +32,7 @@ const verifyToken = async (req, res, next) => {
 router.get("/test", verifyToken, Test);
 router.post("/signup", Signup);
 router.post("/login", Login);
+
+router.post("/register-resturant", RegisterResturant);
 
 module.exports = router;

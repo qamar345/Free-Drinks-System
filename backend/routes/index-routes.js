@@ -3,7 +3,11 @@ const { SECRET } = require("../config/config");
 const jwt = require("jsonwebtoken");
 const { User } = require("../model/user-model");
 const { Test, Signup, Login } = require("../controller/user-controller");
-const { RegisterResturant } = require("../controller/resturant-controller");
+const {
+  RegisterResturant,
+  AddMenu,
+  GetMenu,
+} = require("../controller/resturant-controller");
 
 const router = express.Router();
 
@@ -34,5 +38,7 @@ router.post("/signup", Signup);
 router.post("/login", Login);
 
 router.post("/register-resturant", RegisterResturant);
+router.post("/add-menu", AddMenu);
+router.post("/get-menu", GetMenu);
 
 module.exports = router;

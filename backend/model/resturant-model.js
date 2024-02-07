@@ -17,9 +17,16 @@ const ResturantSchema = new mongoose.Schema(
       required: true,
     },
 
-    coord: {
-      type: Array,
-      required: true,
+    location: {
+      type: {
+        type: String,
+        required: true,
+      },
+
+      coordinates: {
+        type: Array,
+        required: true,
+      },
     },
 
     address: {
@@ -41,6 +48,11 @@ const Resturant = mongoose.model("resturants", ResturantSchema);
 
 const MenuShcema = new mongoose.Schema(
   {
+    email: {
+      type: String,
+      required: true,
+    },
+
     imgURL: {
       type: String,
       required: true,
@@ -56,4 +68,6 @@ const MenuShcema = new mongoose.Schema(
   }
 );
 
-module.exports = { Resturant, MenuShcema };
+const Menu = mongoose.model("menus", MenuShcema);
+
+module.exports = { Resturant, Menu };

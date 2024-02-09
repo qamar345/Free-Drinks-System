@@ -7,9 +7,9 @@ export const UserFooter = () => {
       <footer className="text-center text-white">
         <div className="container pt-4">
           <section className="mb-4">
-            <h2 className="text-center" style={{ color: "black" }} href="#">
+            <h4 className="text-center" style={{ color: "black" }} href="#">
               DRINKPASS
-            </h2>
+            </h4>
           </section>
         </div>
         <div

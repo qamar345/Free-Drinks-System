@@ -36,9 +36,12 @@ const AddMenu = async (req, res) => {
   }
 };
 
-const GetMenu = async (req, res) => {
-  const long = req.body.lo;
-  const lati = req.body.la;
+const GetMenu = async (req, res, next) => {
+  const long = req.body.long;
+  const lati = req.body.lati;
+
+  // console.log(long, lati);
+
   try {
     const result = await Resturant.aggregate([
       {
@@ -66,7 +69,7 @@ const GetMenu = async (req, res) => {
 
     res.json(result);
   } catch (error) {
-    console.log(error);
+    console.log("")
   }
 };
 

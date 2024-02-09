@@ -63,7 +63,7 @@ export const UserNav = ({ username }) => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 second-nav">
               <li className="nav-item regis-btn">
                 <button className="nav-link register-nav" href="#">
-                  Username: {username}
+                  {username}
                 </button>
               </li>
 

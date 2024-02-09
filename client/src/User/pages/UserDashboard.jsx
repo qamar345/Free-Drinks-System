@@ -5,12 +5,14 @@ import { UserNav } from "../components/UserNav";
 import { useNavigate } from "react-router-dom";
 import { ResturantCards } from "../components/ResturantCards";
 import axios from "axios";
+import { UserFooter } from "../components/UserFooter";
 
 export const UserDashboard = () => {
   const navigate = useNavigate();
   const check = sessionStorage.getItem("isLoggedIn");
   const [data, setData] = useState([]);
-  const [location, setLocation] = useState({});
+  const [long, setLong] = useState();
+  const [lati, setLati] = useState();
 
   if (!check) {
     navigate("/");
@@ -18,15 +20,17 @@ export const UserDashboard = () => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      setLocation({
-        long: position.coords.longitude,
-        lati: position.coords.latitude,
-      });
+      setLong(position.coords.longitude);
+      setLati(position.coords.latitude);
     });
-
-    console.log(location);
-
-    // axios.post("http://localhost:8000/get-menu")
+    axios
+      .post("http://localhost:8000/get-menu", { long, lati })
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 
   return (
@@ -78,15 +82,16 @@ export const UserDashboard = () => {
           <div className="container-fluid">
             <div className="row">
               <h3 className="text-center">Nearby Local Resturants</h3>
-              <div className="col-sm-4 mt-5">
-                <ResturantCards />
-              </div>
+              {/* <div className="col-sm-4 mt-5"> */}
+              <ResturantCards resturants={data} />
+              {/* </div> */}
             </div>
             <br />
             <br />
           </div>
         </div>
       </section>
+      <UserFooter/>
     </>
   );
 };

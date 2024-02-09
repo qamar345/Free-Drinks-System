@@ -12,11 +12,6 @@ const ResturantSchema = new mongoose.Schema(
       required: true,
     },
 
-    password: {
-      type: String,
-      required: true,
-    },
-
     location: {
       type: {
         type: String,
@@ -30,11 +25,6 @@ const ResturantSchema = new mongoose.Schema(
     },
 
     address: {
-      type: String,
-      required: true,
-    },
-
-    role: {
       type: String,
       required: true,
     },

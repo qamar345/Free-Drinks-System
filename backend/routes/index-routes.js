@@ -8,6 +8,8 @@ const {
   AddMenu,
   GetMenu,
 } = require("../controller/resturant-controller");
+const { CustomerResponse } = require("../controller/customers-controller");
+
 
 const router = express.Router();
 
@@ -40,5 +42,6 @@ router.post("/login", Login);
 router.post("/register-resturant", RegisterResturant);
 router.post("/add-menu", AddMenu);
 router.post("/get-menu", GetMenu);
+router.post("/customer-response", CustomerResponse);
 
 module.exports = router;

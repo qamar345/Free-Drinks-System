@@ -1,3 +1,5 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import { UserLogin } from "./User/pages/UserLogin";
 import { UserRegister } from "./User/pages/UserRegister";
 import { Test } from "./Test";
@@ -20,6 +22,17 @@ import { Response } from "./Resturant/pages/Response";
 function App() {
   return (
     <>
+      <BrowserRouter>
+        <Routes>
+          <Route index path="/" element={<UserHome />} />
+          <Route path="/user-login" element={<UserLogin />} />
+          <Route path="/user-register" element={<UserRegister />} />
+          <Route path="/user-home" element={<UserDashboard />} />
+
+
+        </Routes>
+      </BrowserRouter>
+
       {/* <UserLogin/> */}
       {/* <UserRegister/> */}
       {/* <UserHome /> */}
@@ -33,7 +46,7 @@ function App() {
       {/* <ResturantDashboard /> */}
       {/* <RegisterResturant/> */}
       {/* <ResturantLogin /> */}
-      <AddMenu/>
+      {/* <AddMenu/> */}
       {/* <Response/> */}
     </>
   );

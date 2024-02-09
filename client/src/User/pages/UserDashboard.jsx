@@ -1,11 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/style/style.css";
-import QRCode from "react-qr-code";
-import drink1 from "../assets/images/drinks-1.webp";
+
+import { UserNav } from "../components/UserNav";
+import { useNavigate } from "react-router-dom";
+import { ResturantCards } from "../components/ResturantCards";
+import axios from "axios";
 
 export const UserDashboard = () => {
+  const navigate = useNavigate();
+  const check = sessionStorage.getItem("isLoggedIn");
+  const [data, setData] = useState([]);
+  const [location, setLocation] = useState({});
+
+  if (!check) {
+    navigate("/");
+  }
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLocation({
+        long: position.coords.longitude,
+        lati: position.coords.latitude,
+      });
+    });
+
+    console.log(location);
+
+    // axios.post("http://localhost:8000/get-menu")
+  });
+
   return (
     <>
+      <UserNav username={sessionStorage.getItem("username")} />
+      <br />
       <section style={{ marginTop: "10%" }}>
         <div className="container">
           <div className="container-fluid text-center">
@@ -52,125 +79,8 @@ export const UserDashboard = () => {
             <div className="row">
               <h3 className="text-center">Nearby Local Resturants</h3>
               <div className="col-sm-4 mt-5">
-                <div className="card border-0 shadow rounded">
-                  <img src={drink1} class="card-img-top" alt="..." />
-                  <div
-                    style={{
-                      backgroundColor: "white",
-                      padding: "16px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ marginTop: "-50px" }}>
-                      <QRCode
-                        value="http://192.168.1.120:3000"
-                        size={75}
-                        style={{ border: "5px solid  #ed6a5a " }}
-                      />
-                    </div>
-                    <span
-                      style={{
-                        fontSize: "small",
-                        fontWeight: "600",
-                        color: "#ed6a5a",
-                      }}
-                    >
-                      SCAN QR CODE & ENJOY FREE DRINKS
-                    </span>
-                  </div>
-                  <div className="card-body text-center">
-                    <h5 className="card-title">
-                      XYZ Resturant Offer Free Drinks
-                    </h5>
-                  </div>
-                </div>
+                <ResturantCards />
               </div>
-
-              <div className="col-sm-4 mt-5">
-                <div className="card border-0 shadow rounded">
-                  <img src={drink1} class="card-img-top" alt="..." />
-                  <div
-                    style={{
-                      backgroundColor: "white",
-                      padding: "16px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ marginTop: "-50px" }}>
-                      <QRCode
-                        value="https://www.youtube.com"
-                        size={75}
-                        style={{ border: "5px solid  #ed6a5a " }}
-                      />
-                    </div>
-                    <span
-                      style={{
-                        fontSize: "small",
-                        fontWeight: "600",
-                        color: "#ed6a5a",
-                      }}
-                    >
-                      SCAN QR CODE & ENJOY FREE DRINKS
-                    </span>
-                  </div>
-                  <div className="card-body text-center">
-                    <h5 className="card-title">
-                      XYZ Resturant Offer Free Drinks
-                    </h5>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-sm-4 mt-5">
-                <div className="card border-0 shadow rounded">
-                  <img src={drink1} class="card-img-top" alt="..." />
-                  <div
-                    style={{
-                      backgroundColor: "white",
-                      padding: "16px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ marginTop: "-50px" }}>
-                      <QRCode
-                        value="http://192.168.1.120:3000"
-                        size={75}
-                        style={{ border: "5px solid  #ed6a5a " }}
-                      />
-                    </div>
-                    <span
-                      style={{
-                        fontSize: "small",
-                        fontWeight: "600",
-                        color: "#ed6a5a",
-                      }}
-                    >
-                      SCAN QR CODE & ENJOY FREE DRINKS
-                    </span>
-                  </div>
-                  <div className="card-body text-center">
-                    <h5 className="card-title">
-                      XYZ Resturant Offer Free Drinks
-                    </h5>
-                  </div>
-                </div>
-              </div>
-
-              {/* <div className="col-sm-4">
-                <div className="card border-0 shadow rounded">
-                  <img src="..." class="card-img-top" alt="..." />
-                  <img src="..." class="card-img-top" alt="..." />
-                  <div className="card-body">B</div>
-                </div>
-              </div>
-
-              <div className="col-sm-4">
-                <div className="card border-0 shadow rounded">
-                  <img src="..." class="card-img-top" alt="..." />
-                  <img src="..." class="card-img-top" alt="..." />
-                  <div className="card-body">C</div>
-                </div>
-              </div> */}
             </div>
             <br />
             <br />

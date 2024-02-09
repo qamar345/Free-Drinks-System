@@ -1,7 +1,7 @@
 const { Resturant, Menu } = require("../model/resturant-model");
 
 const RegisterResturant = async (req, res) => {
-  const { name, email, password, location, address, role } = req.body;
+  const { name, email, location, address } = req.body;
 
   const data = Resturant({
     name: name,
@@ -18,40 +18,12 @@ const RegisterResturant = async (req, res) => {
   }
 };
 
-// const LoginResturant = async (req, res) => {
-//   const { email, password, role } = req.body;
-
-//   const filter = { email: email, password: password, role: role };
-
-//   try {
-//     const result = await Resturant.findOne(filter);
-//     if (result === null) {
-//       res.json("User not found");
-//     } else {
-//       const secretKey = SECRET;
-//       const payload = {
-//         email: result.email,
-//         password: result.password,
-//       };
-//       /* Create JWT */
-//       const token = jwt.sign(payload, secretKey, { expiresIn: "5d" });
-
-//       res.json({
-//         n: result.name,
-//         e: result.email,
-//         tokenID: token,
-//       });
-//     }
-//   } catch (error) {
-//     res.json(error);
-//   }
-// }
-
 const AddMenu = async (req, res) => {
-  const { email, image, title } = req.body;
+  const { email, id, image, title } = req.body;
 
   const data = Menu({
     email: email,
+    menuId: id,
     imgURL: image,
     title: title,
   });
@@ -68,18 +40,6 @@ const GetMenu = async (req, res) => {
   const long = req.body.lo;
   const lati = req.body.la;
   try {
-    // const result = await Resturant.find(
-    //   {
-    //     location: {
-    //       $near: {
-    //         $geometry: {
-    //           type: "Point",
-    //           coordinates: [parseFloat(long), parseFloat(lati)],
-    //         },
-    //       },
-    //     },
-    //   },
-
     const result = await Resturant.aggregate([
       {
         $geoNear: {

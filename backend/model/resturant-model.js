@@ -43,6 +43,11 @@ const MenuShcema = new mongoose.Schema(
       required: true,
     },
 
+    menuId: {
+      type: Number,
+      required: true,
+    },
+
     imgURL: {
       type: String,
       required: true,

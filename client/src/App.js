@@ -28,26 +28,24 @@ function App() {
           <Route path="/user-login" element={<UserLogin />} />
           <Route path="/user-register" element={<UserRegister />} />
           <Route path="/user-home" element={<UserDashboard />} />
+          <Route path="/menu" element={<Menu />} />
 
+          {/* Restaurant */}
+          <Route path="/register-restaurants" element={<RegisterResturant />} />
+          <Route path="/restaurant-login" element={<ResturantLogin />} />
+          <Route path="/restaurant-dashboard" element={<ResturantDashboard />} />
+          <Route path="/add-menu" element={<AddMenu />} />
 
+          {/* Admin */}
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/restaurant" element={<Resturants />} />
+          <Route path="/users" element={<Users />} />
+
+          {/* For Admin & Restaurants */}
+          <Route path="/response" element={<Response />} />
         </Routes>
       </BrowserRouter>
-
-      {/* <UserLogin/> */}
-      {/* <UserRegister/> */}
-      {/* <UserHome /> */}
-      {/* <UserNav />
-      <UserDashboard /> */}
-      {/* <Menu/> */}
-      {/* <AdminLogin/> */}
-      {/* <AdminDashboard/> */}
-      {/* <Resturants/> */}
-      {/* <Users/> */}
-      {/* <ResturantDashboard /> */}
-      {/* <RegisterResturant/> */}
-      {/* <ResturantLogin /> */}
-      {/* <AddMenu/> */}
-      {/* <Response/> */}
     </>
   );
 }

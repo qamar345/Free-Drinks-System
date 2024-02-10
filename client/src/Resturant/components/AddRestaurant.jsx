@@ -1,34 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 
-export const RegisterResturant = () => {
-  const [data, setData] = useState({
-    role: "restaurant",
-    trial: "permanent",
-  });
+export const AddRestaurant = () => {
+  const [long, setLong] = useState();
+  const [lati, setLati] = useState();
 
-  const handleInput = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  const SubmitHandler = () => {
-    if (
-      data.name === undefined ||
-      data.email === undefined ||
-      data.password === undefined
-    ) {
-      alert("Please fill empty fields first!!!");
-    } else {
-      axios
-        .post("http://localhost:8000/signup", { data })
-        .then((res) => {
-          alert(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
   return (
     <>
       <section className="restu-bg">
@@ -60,15 +35,6 @@ export const RegisterResturant = () => {
                     className="form-control rounded-0"
                     onChange={handleInput}
                   />
-                  <br />
-                  <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    className="form-control rounded-0"
-                    onChange={handleInput}
-                  />
-
                   <br />
 
                   <div className="restu-mobile-view">

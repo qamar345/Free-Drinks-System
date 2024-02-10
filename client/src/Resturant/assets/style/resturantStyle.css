@@ -5,8 +5,8 @@
 }
 
 .restu-register-form {
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin-top: 35%;
+    margin-bottom: 38%;
 }
 
 .restu-register-btn {
@@ -56,8 +56,8 @@
 
 @media screen and (max-width: 600px) {
     .restu-register-form {
-        margin-top: 50%;
-        margin-bottom: 50%;
+        margin-top: 75%;
+        margin-bottom: 80%;
     }
 
     .restu-mobile-view {

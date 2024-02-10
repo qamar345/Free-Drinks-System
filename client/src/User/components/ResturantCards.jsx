@@ -3,7 +3,7 @@ import QRCode from "react-qr-code";
 import drink1 from "../assets/images/drinks-1.webp";
 
 export const ResturantCards = ({ resturants }) => {
-  const Link = "http://192.168.1.120:3000";
+  const Link = "http://192.168.0.114:3000/menu";
 
   return (
     <>

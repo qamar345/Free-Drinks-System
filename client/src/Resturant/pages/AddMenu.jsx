@@ -5,7 +5,9 @@ import storage from "../config/firebaseConfig";
 
 export const AddMenu = () => {
   const [files, setFiles] = useState([]);
-  const [menu, setMenu] = useState({});
+  const [menu, setMenu] = useState({
+    menuId: Math.floor(Math.random() * 9999),
+  });
   const [percent, setPercent] = useState(0);
   const [urls, setUrls] = useState([]);
 
@@ -54,6 +56,20 @@ export const AddMenu = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleInput = (e) => {
+    setMenu({ ...menu, [e.target.name]: e.target.value });
+  };
+
+  const SubmitMenu = () => {
+    setMenu({ ...menu, image: urls });
+
+    if (menu.title === undefined || menu.image === undefined) {
+      alert("Please fill empty fields firts!!!");
+    } else {
+      console.log(menu);
+    }
   };
 
   return (
@@ -123,16 +139,21 @@ export const AddMenu = () => {
                   </div>
                   <br />
                   <input
+                    name="title"
                     type="text"
                     className="form-control rounded-0"
                     placeholder="Menu Name"
+                    onChange={handleInput}
                   />
 
                   <br />
                   <br />
 
                   <div className="text-center">
-                    <button className="btn btn-primary rounded-0 border-0 menu-submit">
+                    <button
+                      className="btn btn-primary rounded-0 border-0 menu-submit"
+                      onClick={SubmitMenu}
+                    >
                       SUBMIT
                     </button>
                   </div>

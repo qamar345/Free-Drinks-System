@@ -82,16 +82,14 @@ export const UserDashboard = () => {
           <div className="container-fluid">
             <div className="row">
               <h3 className="text-center">Nearby Local Resturants</h3>
-              {/* <div className="col-sm-4 mt-5"> */}
               <ResturantCards resturants={data} />
-              {/* </div> */}
             </div>
             <br />
             <br />
           </div>
         </div>
       </section>
-      <UserFooter/>
+      <UserFooter />
     </>
   );
 };

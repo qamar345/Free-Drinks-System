@@ -3,6 +3,16 @@ import React, { useState } from "react";
 export const AddRestaurant = () => {
   const [long, setLong] = useState();
   const [lati, setLati] = useState();
+  const [data, setData] = useState({});
+
+  const handleInput = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+
+  const AddCafe = () => {
+    
+  }
 
   return (
     <>

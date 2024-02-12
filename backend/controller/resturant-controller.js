@@ -1,18 +1,40 @@
 const { Resturant, Menu } = require("../model/resturant-model");
 
 const RegisterResturant = async (req, res) => {
-  const { name, email, location, address } = req.body;
+  const { name, email, longitude, latitude, address } = req.body.data;
 
   const data = Resturant({
     name: name,
     email: email,
-    location: location,
+    location: {
+      type: "Point",
+      coordinates: [parseFloat(longitude), parseFloat(latitude)],
+    },
     address: address,
   });
 
+  // console.log(data);
+
+  let flag = false;
+
   try {
-    await data.save();
-    res.json("Resturant Registered Successfully");
+    const getRestaurants = await Resturant.find();
+
+    for (let i = 0; i < getRestaurants.length; i++) {
+      if (getRestaurants[i].email === email) {
+        flag = true;
+      }
+    }
+
+    if (flag) {
+      res.json({
+        flag,
+        msg1: "Email already registered! Please choose another one",
+      });
+    } else {
+      await data.save();
+      res.json({ flag, msg2: "Resturant Registered Successfully" });
+    }
   } catch (error) {
     res.json(error);
   }
@@ -69,7 +91,7 @@ const GetMenu = async (req, res, next) => {
 
     res.json(result);
   } catch (error) {
-    console.log("")
+    console.log("");
   }
 };
 

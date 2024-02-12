@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/style/resturantStyle.css";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../config/firebaseConfig";
+import Aos from "aos";
 
 export const AddMenu = () => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   const [files, setFiles] = useState([]);
   const [menu, setMenu] = useState({
     menuId: Math.floor(Math.random() * 9999),
@@ -78,7 +83,12 @@ export const AddMenu = () => {
         <div className="container">
           <div className="container-fluid  menu-form">
             <div className="row">
-              <h3 className="text-center" style={{ color: "white" }}>
+              <h3
+                data-aos="fade-down"
+                data-aos-duration="3000"
+                className="text-center"
+                style={{ color: "white" }}
+              >
                 Add Menu
               </h3>
               <br />
@@ -87,6 +97,8 @@ export const AddMenu = () => {
               <div className="col-sm-8">
                 <div className="shadow rounded p-">
                   <input
+                    data-aos="fade-right"
+                    data-aos-duration="3000"
                     type="file"
                     className="form-control rounded-0"
                     multiple
@@ -129,7 +141,11 @@ export const AddMenu = () => {
                     " "
                   )}
                   <br />
-                  <div className="text-center">
+                  <div
+                    className="text-center"
+                    data-aos="zoom-in"
+                    data-aos-duration="3000"
+                  >
                     <button
                       className="btn btn-warning rounded-0 border-0"
                       onClick={handleUpload}
@@ -139,6 +155,8 @@ export const AddMenu = () => {
                   </div>
                   <br />
                   <input
+                    data-aos="fade-left"
+                    data-aos-duration="3000"
                     name="title"
                     type="text"
                     className="form-control rounded-0"
@@ -149,7 +167,11 @@ export const AddMenu = () => {
                   <br />
                   <br />
 
-                  <div className="text-center">
+                  <div
+                    className="text-center"
+                    data-aos="fade-up"
+                    data-aos-duration="3000"
+                  >
                     <button
                       className="btn btn-primary rounded-0 border-0 menu-submit"
                       onClick={SubmitMenu}

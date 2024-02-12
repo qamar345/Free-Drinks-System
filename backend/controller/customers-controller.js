@@ -38,4 +38,11 @@ const CustomerResponse = async (req, res) => {
   }
 };
 
-module.exports = { CustomerResponse };
+const GetResponse = async (req, res) => {
+  try {
+    const response = await Customers.find();
+    res.json(response);
+  } catch (error) {}
+};
+
+module.exports = { CustomerResponse, GetResponse };

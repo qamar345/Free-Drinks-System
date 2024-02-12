@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AddRestaurant = () => {
+  const navigate = useNavigate();
   const [long, setLong] = useState();
   const [lati, setLati] = useState();
   const [data, setData] = useState({});
@@ -9,10 +12,42 @@ export const AddRestaurant = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLong(position.coords.longitude);
+      setLati(position.coords.latitude);
+    });
+  });
 
-  const AddCafe = () => {
-    
-  }
+  const AddCafe = (e) => {
+    setData({ ...data, longitude: long, latitude: lati });
+    // let flag = false;
+
+    if (
+      data.name === undefined ||
+      data.email === undefined ||
+      long === undefined ||
+      lati === undefined ||
+      data.address === undefined
+    ) {
+      alert("Please fill empty fields firts!!!");
+    } else {
+      axios
+        .post("http://localhost:8000/add-resturant", { data })
+        .then((res) => {
+          if (res.data.flag === true) {
+            alert(res.data.msg1);
+          }
+          if (res.data.flag === false) {
+            alert(res.data.msg2);
+            navigate("/restaurant-dashboard");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   return (
     <>
@@ -47,10 +82,19 @@ export const AddRestaurant = () => {
                   />
                   <br />
 
+                  <textarea
+                    className="form-control"
+                    name="address"
+                    id=""
+                    cols="10"
+                    rows="3"
+                    onChange={handleInput}
+                  ></textarea>
+                  <br />
                   <div className="restu-mobile-view">
                     <button
                       className="btn btn-primary rounded-0 border-0 restu-register-btn"
-                      onClick={SubmitHandler}
+                      onClick={AddCafe}
                     >
                       Register
                     </button>

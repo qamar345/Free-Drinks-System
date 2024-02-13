@@ -1,8 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Aos from "aos";
 
 export const AddRestaurant = () => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   const navigate = useNavigate();
   const [long, setLong] = useState();
   const [lati, setLati] = useState();
@@ -59,13 +64,20 @@ export const AddRestaurant = () => {
               <div className="col-sm-4">
                 <div className="shadow rounded p3 restu-register-form">
                   <br />
-                  <h3 className="text-center" style={{ color: "white" }}>
+                  <h3
+                    data-aos="fade-down"
+                    data-aos-duration="3000"
+                    className="text-center"
+                    style={{ color: "white" }}
+                  >
                     Register Resturant
                   </h3>
                   <br />
                   <br />
 
                   <input
+                    data-aos="fade-right"
+                    data-aos-duration="3000"
                     name="name"
                     type="text"
                     placeholder="Resturant Name"
@@ -74,6 +86,8 @@ export const AddRestaurant = () => {
                   />
                   <br />
                   <input
+                    data-aos="fade-left"
+                    data-aos-duration="3000"
                     name="email"
                     type="email"
                     placeholder="Email"
@@ -83,15 +97,22 @@ export const AddRestaurant = () => {
                   <br />
 
                   <textarea
+                    data-aos="zoom-in"
+                    data-aos-duration="3000"
                     className="form-control"
                     name="address"
                     id=""
                     cols="10"
                     rows="3"
+                    placeholder="Address"
                     onChange={handleInput}
                   ></textarea>
                   <br />
-                  <div className="restu-mobile-view">
+                  <div
+                    className="restu-mobile-view"
+                    data-aos="fade-up"
+                    data-aos-duration="3000"
+                  >
                     <button
                       className="btn btn-primary rounded-0 border-0 restu-register-btn"
                       onClick={AddCafe}

@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import "../assets/style/resturantStyle.css";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Response = () => {
+export const AdminResponse = () => {
   const [data, setData] = useState([]);
 
   const navigate = useNavigate();
-  const check = sessionStorage.getItem("RisLoggedIn");
+  const check = sessionStorage.getItem("adminIsLoggedIn");
 
   if (!check) {
     navigate("/");

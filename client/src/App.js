@@ -18,6 +18,8 @@ import { ResturantLogin } from "./Resturant/pages/ResturantLogin";
 import { AddMenu } from "./Resturant/pages/AddMenu";
 import { Response } from "./Resturant/pages/Response";
 import { AddRestaurant } from "./Resturant/components/AddRestaurant";
+import { AdminResponse } from "./Admin/components/AdminResponse";
+import { MenuCard } from "./User/components/MenuCard";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
           <Route path="/user-register" element={<UserRegister />} />
           <Route path="/user-home" element={<UserDashboard />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/menu-card" element={<MenuCard />} />
 
           {/* Restaurant */}
           <Route path="/register-restaurants" element={<RegisterResturant />} />
@@ -43,11 +46,12 @@ function App() {
           {/* Admin */}
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/restaurant" element={<Resturants />} />
+          <Route path="/restaurants" element={<Resturants />} />
           <Route path="/users" element={<Users />} />
 
           {/* For Admin & Restaurants */}
           <Route path="/response" element={<Response />} />
+          <Route path="/admin-response" element={<AdminResponse />} />
         </Routes>
       </BrowserRouter>
     </>

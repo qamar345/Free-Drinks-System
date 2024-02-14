@@ -41,11 +41,11 @@ const RegisterResturant = async (req, res) => {
 };
 
 const AddMenu = async (req, res) => {
-  const { email, id, image, title } = req.body;
+  const { email, image, title } = req.body;
 
   const data = Menu({
     email: email,
-    menuId: id,
+
     imgURL: image,
     title: title,
   });
@@ -95,8 +95,20 @@ const GetMenu = async (req, res, next) => {
   }
 };
 
+const getSelectedMenu = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const data = await Menu.find({ email: email });
+    res.json(data);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 module.exports = {
   RegisterResturant,
   AddMenu,
   GetMenu,
+  getSelectedMenu,
 };

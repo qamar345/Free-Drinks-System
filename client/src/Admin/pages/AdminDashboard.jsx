@@ -2,11 +2,26 @@ import React, { useEffect } from "react";
 import "../assets/style/adminStyle.css";
 import cafe from "../assets/images/cafe.ico";
 import Aos from "aos";
+import { Link, useNavigate } from "react-router-dom";
 
 export const AdminDashboard = () => {
   useEffect(() => {
     Aos.init();
   }, []);
+
+  const navigate = useNavigate();
+  const check = sessionStorage.getItem("adminIsLoggedIn");
+
+  if (!check) {
+    navigate("/");
+  }
+
+  const logoutHandler = () => {
+    alert("LoggedOut");
+    sessionStorage.removeItem("adminIsLoggedIn");
+    navigate("/");
+  };
+
   return (
     <>
       <section className="admin-bg">
@@ -14,7 +29,7 @@ export const AdminDashboard = () => {
           <div className="container-fluid dashboard-style">
             <div className="row">
               <div className="col-sm-3 mt-3">
-                <a href="" style={{ textDecoration: "none" }}>
+                <Link to="/restaurants" style={{ textDecoration: "none" }}>
                   <div
                     data-aos="zoom-in"
                     data-aos-duration="3000"
@@ -27,10 +42,10 @@ export const AdminDashboard = () => {
                       <h3>Resturants</h3>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
               <div className="col-sm-3 mt-3">
-                <a href="" style={{ textDecoration: "none" }}>
+                <Link to="/users" style={{ textDecoration: "none" }}>
                   <div
                     data-aos="zoom-in"
                     data-aos-duration="3000"
@@ -44,10 +59,10 @@ export const AdminDashboard = () => {
                       <h3>Users</h3>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
               <div className="col-sm-3 mt-3">
-                <a href="" style={{ textDecoration: "none" }}>
+                <Link to={"/admin-response"} style={{ textDecoration: "none" }}>
                   <div
                     data-aos="zoom-in"
                     data-aos-duration="3000"
@@ -61,10 +76,13 @@ export const AdminDashboard = () => {
                       <h3>Response</h3>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
               <div className="col-sm-3 mt-3">
-                <a href="" style={{ textDecoration: "none" }}>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  onClick={logoutHandler}
+                >
                   <div
                     data-aos="zoom-in"
                     data-aos-duration="3000"
@@ -78,7 +96,7 @@ export const AdminDashboard = () => {
                       <h3>Logout</h3>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
               <br />
               <br />

@@ -28,6 +28,7 @@ export const AdminLogin = () => {
         if (res.data.e === data.email) {
           sessionStorage.setItem("adminEmail", res.data.e);
           sessionStorage.setItem("adminName", res.data.n);
+          sessionStorage.setItem("adminIsLoggedIn", true);
           sessionStorage.setItem("adminToken", res.data.tokenID);
           alert("Login Successfully");
           navigate("/admin-dashboard");

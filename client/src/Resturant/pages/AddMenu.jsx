@@ -3,6 +3,7 @@ import "../assets/style/resturantStyle.css";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../config/firebaseConfig";
 import Aos from "aos";
+import axios from "axios";
 
 export const AddMenu = () => {
   useEffect(() => {
@@ -11,7 +12,7 @@ export const AddMenu = () => {
 
   const [files, setFiles] = useState([]);
   const [menu, setMenu] = useState({
-    menuId: Math.floor(Math.random() * 9999),
+    email: sessionStorage.getItem("Remail"),
   });
   const [percent, setPercent] = useState(0);
   const [urls, setUrls] = useState([]);
@@ -73,7 +74,12 @@ export const AddMenu = () => {
     if (menu.title === undefined || menu.image === undefined) {
       alert("Please fill empty fields firts!!!");
     } else {
-      console.log(menu);
+      axios
+        .post("http://localhost:8000/add-menu", { menu })
+        .then((res) => {
+          alert(res.data);
+        })
+        .catch((err) => console.log(err));
     }
   };
 

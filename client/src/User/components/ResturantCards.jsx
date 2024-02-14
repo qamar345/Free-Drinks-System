@@ -3,7 +3,7 @@ import QRCode from "react-qr-code";
 import drink1 from "../assets/images/drinks-1.webp";
 
 export const ResturantCards = ({ resturants }) => {
-  const Link = "http://192.168.0.114:3000/menu";
+  const Link = "http://192.168.0.106:3000/menu-card";
 
   return (
     <>
@@ -23,11 +23,11 @@ export const ResturantCards = ({ resturants }) => {
                   }}
                 >
                   {res.Menu.map((rss) => {
-                    const { menuId } = rss;
+                    const { email } = rss;
                     return (
                       <div style={{ marginTop: "-50px" }}>
                         <QRCode
-                          value={JSON.stringify({ menuId, Link })}
+                          value={JSON.stringify({ email, Link })}
                           size={75}
                           style={{ border: "5px solid  #ed6a5a " }}
                         />

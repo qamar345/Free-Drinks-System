@@ -7,9 +7,13 @@ const {
   RegisterResturant,
   AddMenu,
   GetMenu,
+  getSelectedMenu,
 } = require("../controller/resturant-controller");
-const { CustomerResponse, GetResponse } = require("../controller/customers-controller");
-
+const {
+  CustomerResponse,
+  GetResponse,
+} = require("../controller/customers-controller");
+const { GetRestaurants, GetUsers } = require("../controller/data-controller");
 
 const router = express.Router();
 
@@ -44,6 +48,8 @@ router.post("/add-menu", AddMenu);
 router.post("/get-menu", GetMenu);
 router.post("/submit-response", CustomerResponse);
 router.get("/get-response", GetResponse);
-
+router.get("/get-restaurants", GetRestaurants);
+router.get("/get-users", GetUsers);
+router.post("/get-selected", getSelectedMenu);
 
 module.exports = router;

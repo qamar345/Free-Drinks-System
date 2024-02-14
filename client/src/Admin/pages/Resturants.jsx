@@ -1,48 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/style/adminStyle.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Resturants = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+
+  const check = sessionStorage.getItem("adminIsLoggedIn");
+
+  if (!check) {
+    navigate("/");
+  }
+
+  const getRestaurants = () => {
+    axios
+      .get("http://localhost:8000/get-restaurants")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getRestaurants();
+  });
   return (
     <>
-      <section>
+      <section className="admin-bg">
         <div className="container">
           <div className="container-fluid resturant-table">
-            <table className="table text-center overflow-x-scroll">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Contact</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>XYZ Reesturant</td>
-                  <td>0300-1234567</td>
-                  <td>ABC Street XYZ Road</td>
-                  <td>
-                    <button className="btn btn-danger"> Delete </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>XYZ Reesturant</td>
-                  <td>0300-1234567</td>
-                  <td>ABC Street XYZ Road</td>
-                  <td>
-                    <button className="btn btn-danger"> Delete </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>XYZ Reesturant</td>
-                  <td>0300-1234567</td>
-                  <td>ABC Street XYZ Road</td>
-                  <td>
-                    <button className="btn btn-danger"> Delete </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <h3 className="text-center" style={{ color: "white" }}>
+              Restaurants
+            </h3>
+            <br />
+
+            <div className="overflow-auto text-center">
+              <table className="table table-bordered overflow-scroll">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((res) => {
+                    const { name, email, address } = res;
+
+                    return (
+                      <>
+                        <tr>
+                          <td>{name}</td>
+                          <td>{email}</td>
+                          <td>{address}</td>
+                        </tr>
+                      </>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>

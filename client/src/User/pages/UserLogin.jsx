@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../assets/style/style.css";
-import drink0 from "../assets/images/drinks-0.webp";
 import AOS from "aos";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

@@ -1,7 +1,7 @@
 const { Customers } = require("../model/customers-model");
 
 const CustomerResponse = async (req, res) => {
-  const { username, email, drinks } = req.body;
+  const { username, email, drinks } = req.body.response;
 
   const data = Customers({
     username: username,
@@ -28,10 +28,10 @@ const CustomerResponse = async (req, res) => {
       const update = { drinks: storeDrinks };
 
       await Customers.findOneAndUpdate(filter, update);
-      res.json("Your Response Update Succssfuly");
+      res.json("Your Response Update Successfuly");
     } else {
       await data.save();
-      res.json("Your Response Submitted Succssfuly");
+      res.json("Your Response Submitted Successfuly");
     }
   } catch (error) {
     res.json(error);

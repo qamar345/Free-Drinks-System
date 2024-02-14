@@ -26,7 +26,7 @@ export const UserRegister = () => {
       alert("Please empty fields first!!!");
     } else {
       axios
-        .post("http://localhost:8000/signup", { data })
+        .post("http://192.168.0.106:8000/signup", { data })
         .then((res) => {
           alert(res.data);
           navigate("/user-login");

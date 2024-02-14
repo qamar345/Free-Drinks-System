@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import drink1 from "../assets/images/drinks-1.webp";
-// import pumpkin from "../assets/images/pumpkin.webp";
-// import mango from "../assets/images/mango.webp";
-// import strawberry from "../assets/images/strawberry.webp";
 import "../assets/style/style.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,7 +16,7 @@ export const Menu = () => {
   const getMenu = () => {
     if (email !== undefined) {
       axios
-        .post("http://localhost:8000/get-selected", { email })
+        .post("http://192.168.0.106:8000/get-selected", { email })
         .then((res) => {
           setData(res.data);
         })
@@ -35,6 +31,37 @@ export const Menu = () => {
   useEffect(() => {
     getMenu();
   });
+
+  const [response, setResponse] = useState({
+    email: sessionStorage.getItem("userEmail"),
+    username: sessionStorage.getItem("username"),
+  });
+
+  // let responseData = {
+  //   email: sessionStorage.getItem("userEmail"),
+  //   username: sessionStorage.getItem("username"),
+  // };
+
+  const handleResponse = (t) => {
+    setResponse({ ...response, drinks: t });
+
+    if (
+      response.email === undefined ||
+      response.username === undefined ||
+      response.drinks === undefined
+    ) {
+      alert("Please login first before choose a drink!!!");
+    } else {
+      axios
+        .post("http://192.168.0.106:8000/submit-response", { response })
+        .then((res) => {
+          alert(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   return (
     <>
@@ -59,13 +86,16 @@ export const Menu = () => {
 
                 return (
                   <>
-                    <div className="col-sm-4">
+                    <div className="col-sm-4 mt-3">
                       <div className="card card-style shadow rounded">
                         <img src={imgURL} alt="" />
                         <div className="card-body">
                           <h5>{title}</h5>
                           <br />
-                          <button className="btn btn-primary border-0 rounded-0 choose">
+                          <button
+                            className="btn btn-primary border-0 rounded-0 choose"
+                            onClick={() => handleResponse(title)}
+                          >
                             CHOOSE
                           </button>
                         </div>
@@ -75,7 +105,6 @@ export const Menu = () => {
                 );
               })}
             </div>
-
             <br />
           </div>
         </div>

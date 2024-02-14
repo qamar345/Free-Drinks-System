@@ -24,7 +24,7 @@ export const UserDashboard = () => {
       setLati(position.coords.latitude);
     });
     axios
-      .post("http://localhost:8000/get-menu", { long, lati })
+      .post("http://192.168.0.106:8000/get-menu", { long, lati })
       .then((res) => {
         setData(res.data);
       })

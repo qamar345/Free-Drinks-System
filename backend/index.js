@@ -10,6 +10,6 @@ app.use(cors());
 MYConnection();
 app.use(router);
 
-app.listen(PORT, () => {
+app.listen(PORT, "192.168.0.106", () => {
   console.log(`Server Running on Port: ${PORT}`);
 });

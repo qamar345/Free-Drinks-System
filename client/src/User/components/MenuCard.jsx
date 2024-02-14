@@ -6,9 +6,9 @@ export const MenuCard = () => {
   const [checkEmail, setCheckEmail] = useState("");
   const check = sessionStorage.getItem("isLoggedIn");
 
-  //   if (!check) {
-  //     navigate("/");
-  //   }
+    // if (!check) {
+    //   navigate("/");
+    // }
 
   const handleInput = (e) => {
     setCheckEmail({ ...checkEmail, [e.target.name]: e.target.value });

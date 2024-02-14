@@ -13,8 +13,6 @@ const RegisterResturant = async (req, res) => {
     address: address,
   });
 
-  // console.log(data);
-
   let flag = false;
 
   try {

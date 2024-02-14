@@ -25,9 +25,10 @@ export const UserLogin = () => {
       alert("Please empty fields first!!!");
     } else {
       axios
-        .post("http://localhost:8000/login", { data })
+        .post("http://192.168.0.106:8000/login", { data })
         .then((res) => {
           if (res.data.e === data.email) {
+            sessionStorage.setItem("userEmail", res.data.e);
             sessionStorage.setItem("username", res.data.n);
             sessionStorage.setItem("isLoggedIn", true);
             sessionStorage.setItem("token", res.data.tokenID);

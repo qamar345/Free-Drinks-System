@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
+import { headers } from "../config/RestuToken";
 
 export const AddRestaurant = () => {
   useEffect(() => {
@@ -38,7 +39,7 @@ export const AddRestaurant = () => {
       alert("Please fill empty fields firts!!!");
     } else {
       axios
-        .post("http://localhost:8000/add-resturant", { data })
+        .post("http://localhost:8000/add-resturant", { data }, {headers})
         .then((res) => {
           if (res.data.flag === true) {
             alert(res.data.msg1);

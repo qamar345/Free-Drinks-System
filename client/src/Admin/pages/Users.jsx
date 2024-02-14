@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../assets/style/adminStyle.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { headers } from "../config/AdminToken";
 
 export const Users = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export const Users = () => {
 
   const getUsers = () => {
     axios
-      .get("http://localhost:8000/get-users")
+      .get("http://localhost:8000/get-users", { headers })
       .then((res) => {
         setData(res.data);
       })

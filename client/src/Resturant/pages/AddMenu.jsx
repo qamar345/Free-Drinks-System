@@ -4,6 +4,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import storage from "../config/firebaseConfig";
 import Aos from "aos";
 import axios from "axios";
+import { headers } from "../config/RestuToken";
 
 export const AddMenu = () => {
   useEffect(() => {
@@ -75,7 +76,7 @@ export const AddMenu = () => {
       alert("Please fill empty fields firts!!!");
     } else {
       axios
-        .post("http://localhost:8000/add-menu", { menu })
+        .post("http://localhost:8000/add-menu", { menu }, {headers})
         .then((res) => {
           alert(res.data);
         })

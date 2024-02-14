@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../assets/style/adminStyle.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { headers } from "../config/AdminToken";
+
 
 export const Resturants = () => {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ export const Resturants = () => {
 
   const getRestaurants = () => {
     axios
-      .get("http://localhost:8000/get-restaurants")
+      .get("http://localhost:8000/get-restaurants", {headers})
       .then((res) => {
         setData(res.data);
       })

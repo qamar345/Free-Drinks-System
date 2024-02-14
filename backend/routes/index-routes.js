@@ -30,26 +30,28 @@ const verifyToken = async (req, res, next) => {
     if (verifyEmail !== null) {
       next();
     } else {
-      res.json("Invalid Token!!!");
+      // res.json("Invalid Token!!!");
+      console.log("Invalid Token");
     }
   } catch (error) {
-    res.json("Invalid Token!!!");
+    // res.json("Invalid Token!!!");
+    console.log("Invalid Token");
   }
 };
 
 /* Endpoints */
 
-router.get("/test", verifyToken, Test);
+// router.get("/test", verifyToken, Test);
 router.post("/signup", Signup);
 router.post("/login", Login);
 
-router.post("/add-resturant", RegisterResturant);
-router.post("/add-menu", AddMenu);
-router.post("/get-menu", GetMenu);
+router.post("/add-resturant", verifyToken, RegisterResturant);
+router.post("/add-menu", verifyToken, AddMenu);
+router.post("/get-menu", verifyToken, GetMenu);
 router.post("/submit-response", CustomerResponse);
-router.get("/get-response", GetResponse);
-router.get("/get-restaurants", GetRestaurants);
-router.get("/get-users", GetUsers);
+router.get("/get-response", verifyToken, GetResponse);
+router.get("/get-restaurants",verifyToken, GetRestaurants);
+router.get("/get-users", verifyToken, GetUsers);
 router.post("/get-selected", getSelectedMenu);
 
 module.exports = router;

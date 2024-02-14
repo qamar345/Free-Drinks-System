@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { headers } from "../config/AdminToken";
 
 export const AdminResponse = () => {
   const [data, setData] = useState([]);
@@ -18,7 +19,7 @@ export const AdminResponse = () => {
 
   const getResponse = () => {
     axios
-      .get("http://localhost:8000/get-response")
+      .get("http://localhost:8000/get-response", {headers})
       .then((res) => {
         setData(res.data);
       })

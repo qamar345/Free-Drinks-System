@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../assets/style/resturantStyle.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { headers } from "../config/RestuToken";
 
 export const Response = () => {
   const [data, setData] = useState([]);
@@ -19,7 +20,7 @@ export const Response = () => {
 
   const getResponse = () => {
     axios
-      .get("http://localhost:8000/get-response")
+      .get("http://localhost:8000/get-response", { headers })
       .then((res) => {
         setData(res.data);
       })

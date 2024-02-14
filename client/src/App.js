@@ -26,6 +26,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          {/* User */}
           <Route index path="/" element={<UserHome />} />
           <Route path="/user-login" element={<UserLogin />} />
           <Route path="/user-register" element={<UserRegister />} />

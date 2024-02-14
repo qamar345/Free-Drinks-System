@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../assets/style/style.css";
-
 import { UserNav } from "../components/UserNav";
 import { useNavigate } from "react-router-dom";
 import { ResturantCards } from "../components/ResturantCards";
 import axios from "axios";
 import { UserFooter } from "../components/UserFooter";
+import { headers } from "../config/UserToken";
 
 export const UserDashboard = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const UserDashboard = () => {
       setLati(position.coords.latitude);
     });
     axios
-      .post("http://192.168.0.106:8000/get-menu", { long, lati })
+      .post("http://192.168.0.106:8000/get-menu", { long, lati }, { headers })
       .then((res) => {
         setData(res.data);
       })
